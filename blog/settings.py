@@ -76,14 +76,14 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-  'default': {
-      'ENGINE': 'django.db.backends.postgresql',
-      'NAME': 'blog',
-      'USER': 'test',
-      'PASSWORD': '1234',
-      'HOST': '',
-      'PORT': 5432
-  }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog',
+        'USER': 'test',
+        'PASSWORD': '1234',
+        'HOST': '',
+        'PORT': 5432
+    }
 }
 
 
@@ -126,3 +126,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'users.User'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'

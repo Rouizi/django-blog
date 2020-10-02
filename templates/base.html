@@ -12,7 +12,21 @@
 </head>
 
 <body>
-  <h1>Hello World !</h1>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container">
+      <a href="{% url 'core:home' %}" class="navbar-brand">Django blog</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+          <a href="{% url 'core:home' %}" class="nav-item nav-link">Home</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  {% block content %}
+  {% endblock content %}
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
