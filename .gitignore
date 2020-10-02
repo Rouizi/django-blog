@@ -1,0 +1,8 @@
+.vscode/
+blog/__pycache__/
+core/__pycache__/
+core/migrations/__pycache__/
+users/__pycache__/
+users/migrations/__pycache__/
+
+venv/
