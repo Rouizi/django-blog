@@ -20,11 +20,36 @@
       </button>
       <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div class="navbar-nav">
-          <a href="{% url 'core:home' %}" class="nav-item nav-link">Home</a>
+          <a href="{% url 'core:home' %}"
+            class="nav-item nav-link  {% if request.path == '/' %}active{% endif %}">Home</a>
         </div>
+
+        {% if request.user.is_authenticated %}
+        <div class="navbar-nav ml-auto">
+          <a href="{% url 'users:profile' request.user.username %}"
+            class="nav-item nav-link {% if request.user.username in request.path %}active{% endif %}">
+            Profile
+          </a>
+          <a href="{% url 'users:logout' %}" class="nav-item nav-link">Log out</a>
+        </div>
+        {% else %}
+        <div class="navbar-nav ml-auto">
+          <a href="{% url 'users:login' %}"
+            class="nav-item nav-link {% if request.path == '/users/login/' %}active{% endif %}">Log in</a>
+          <a href="{% url 'users:signup' %}"
+            class="nav-item nav-link {% if request.path == '/users/signup/' %}active{% endif %}">Sign up</a>
+        </div>
+        {% endif %}
       </div>
     </div>
   </nav>
+  {% for message in messages %}
+  <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} 
+  alert-dismissible fade show">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+  {% endfor %}
   {% block content %}
   {% endblock content %}
 

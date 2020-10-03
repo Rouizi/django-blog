@@ -13,7 +13,10 @@
           <div>
             created: {{ post.created_on|date:"N j Y" }},
             last updated: {{ post.updated_on|timesince }},
-            by <a class="badge badge-secondary" href="#">{{ post.author }}</a>
+            by
+            <a class="badge badge-secondary" href="{% url 'users:profile' post.author.username %}">
+              {{ post.author }}
+            </a>
           </div>
           <div>
             {% for tag in post.tags.all %}
