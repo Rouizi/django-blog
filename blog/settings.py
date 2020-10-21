@@ -139,8 +139,6 @@ AUTH_USER_MODEL = 'users.User'
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 LOGIN_URL = "/users/login/"
 
 if os.environ.get('ENV') == 'PRODUCTION':
@@ -148,3 +146,11 @@ if os.environ.get('ENV') == 'PRODUCTION':
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     DATABASES['default'] = dj_database_url.config(
         conn_max_age=600, ssl_require=True)
+    EMAIL_HOST = os.environ.get("EMAIL_HOST")
+    EMAIL_PORT = os.environ.get("EMAIL_HOST")
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST")
+    EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = "Django blog <noreply@djangoblog.com>"
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

@@ -21,7 +21,8 @@ urlpatterns = [
         template_name='users/password_reset.html',
         email_template_name='users/password_reset_email.html',
         subject_template_name='users/password_reset_subject.txt',
-        success_url='/users/password_reset/done/'),
+        success_url='/users/password_reset/done/',
+        from_email="cinorouizi@hotmail.fr"),
         name='password_reset'
     ),
     path('password_reset/done/', PasswordResetDoneView.as_view(
